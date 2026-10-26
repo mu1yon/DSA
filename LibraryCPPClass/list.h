@@ -13,7 +13,7 @@ public:
     {
     public:
         Item(Data val, Item *n = nullptr, Item *p = nullptr)
-            : val_(val), next_(n), prev_(p) {}
+            : next_(val ? n : n), prev_(p), val_(val) {}
 
         Item *next() { return next_; }
         const Item *next() const { return next_; }
