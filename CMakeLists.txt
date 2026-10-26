@@ -23,3 +23,4 @@ endif()
 
 add_subdirectory(LibraryCPPClass)
 add_subdirectory(LW01)
+add_subdirectory(LW02)

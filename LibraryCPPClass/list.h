@@ -12,11 +12,21 @@ public:
     class Item
     {
     public:
-        Item *next() { return nullptr; }
-        Item *prev() { return nullptr; }
-        Data data() const { return Data(); }
-    private:
-        // internal data here
+        Item(Data val, Item *n = nullptr, Item *p = nullptr)
+            : val_(val), next_(n), prev_(p) {}
+
+        Item *next() { return next_; }
+        const Item *next() const { return next_; }
+
+        Item *prev() { return prev_; }
+        const Item *prev() const { return prev_; }
+
+        Data data() const { return val_; }
+        void set_data(Data data) { val_ = data; }
+
+        Item *next_;
+        Item *prev_;
+        Data val_;
     };
 
     // Creates new list
@@ -33,9 +43,11 @@ public:
 
     // Retrieves the first item from the list
     Item *first();
+    const Item *first() const;
 
     // Retrieves the last item of the list
     Item *last();
+    const Item *last() const;
 
     // Inserts new list item into the beginning
     Item *insert(Data data);
@@ -53,8 +65,10 @@ public:
     // Returns pointer to the item next to the deleted one.
     // Should be O(1)
     Item *erase_next(Item *item);
+
 private:
-    // private data should be here
+    Item *head_;
+    Item *tail_;
 };
 
 #endif
